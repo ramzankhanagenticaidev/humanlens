@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+env/
+.git/
+.gitignore
+.env
+app/humanlens.db
+app/models/*.joblib
+app/models/*.json
+evaluation/reports/*.json
+*.zip

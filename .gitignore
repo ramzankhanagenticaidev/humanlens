@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+env/
+
+# HumanLens data & models (regenerate locally, don't commit)
+app/humanlens.db
+app/models/*.joblib
+app/models/*.json
+app/detector/formulaic_phrases.json
+evaluation/reports/*.json
+
+# Environment
+.env
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Docker
+data/

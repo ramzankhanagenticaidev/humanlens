@@ -1,0 +1,34 @@
+# HumanLens — dependencies (all free / open-source, no paid API keys required)
+
+# Backend
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+pydantic==2.9.2
+
+# Frontend
+streamlit==1.38.0
+plotly==5.24.1
+pandas==2.2.3
+
+# NLP / ML
+scikit-learn==1.5.2
+scipy==1.14.1
+numpy==2.1.1
+nltk==3.9.1
+textstat==0.7.4
+joblib==1.4.2
+
+# Optional local LLM client (Ollama talks over local HTTP, no SDK required beyond requests)
+requests==2.32.3
+
+# Testing
+pytest==8.3.3
+httpx==0.27.2
+
+# Utilities
+python-dotenv==1.0.1
+
+# Optional: dataset import script (scripts/download_raid.py) — only needed
+# if you're pulling in the RAID benchmark dataset. Not required for the
+# base app, training on the seed dataset, or the humanizer.
+datasets>=2.19.0

@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - HUMANLENS_ENV=production
+      - HUMANLENS_API_HOST=0.0.0.0
+      - HUMANLENS_API_PORT=8000
+      # Set a real key before exposing this beyond your own machine:
+      - HUMANLENS_API_KEY=${HUMANLENS_API_KEY:-}
+      - HUMANLENS_RATE_LIMIT_PER_MINUTE=${HUMANLENS_RATE_LIMIT_PER_MINUTE:-60}
+      - HUMANLENS_ALLOWED_ORIGINS=${HUMANLENS_ALLOWED_ORIGINS:-http://localhost:8501}
+      - HUMANLENS_DB_PATH=/app/data/humanlens.db
+      - HUMANLENS_MODEL_DIR=/app/data/models
+    volumes:
+      - humanlens_data:/app/data
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "8501:8501"
+    environment:
+      - HUMANLENS_API_HOST=api
+      - HUMANLENS_API_PORT=8000
+      - HUMANLENS_API_KEY=${HUMANLENS_API_KEY:-}
+    depends_on:
+      - api
+    restart: unless-stopped
+
+volumes:
+  humanlens_data:
